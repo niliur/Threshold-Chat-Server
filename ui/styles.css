@@ -213,6 +213,11 @@ img {
   overflow-y: auto;
 }
 
-.button {
-  color: #05728f;
+.my-btn {
+  background-color: #05728f;
 }
+
+.btn-cancel {
+  float: left;
+}
+

@@ -25,7 +25,6 @@
       <div class="messaging">
         <div class="inbox_msg">
           <div class="inbox_people">
-
             <div class="headind_srch">
               <div class="recent_heading">
                 <h4>Recent</h4>
@@ -41,15 +40,15 @@
               </div> -->
 
             <!-- New chat button -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newChatModal">
               New Chat
             </button>
             <!-- New chat modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="newChatModal" tabindex="-1" role="dialog" aria-labelledby="newChatModalTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="recent_heading" id="exampleModalCenterTitle">New Chat</h4>
+                    <h5 class="modal-title" id="newChatModalTitle">New Chat</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -89,78 +88,108 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-info" data-dismiss="modal">Create</button>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Request access button -->
-            <button type="button" style="" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#requestAccessModal">
               Get Access
             </button>
             <!-- Request access modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="requestAccessModal" tabindex="-1" role="dialog" aria-labelledby="requestAccessModalTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="recent_heading" id="exampleModalCenterTitle">New Chat</h4>
+                    <h5 class="modal-title" id="requestAccessModalTitle">Request Access</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
+                    <p>
+                      To request access to this chat's history, record yourself saying this random word.
+                      Your friends get this when you send the request, and that way they know you're you,
+                      not a hacker or a robot.
+                    </p>
+                    <label for="random-word-request" class="col-form-label">Word:</label>
+                    <div class="row">
+                      <div class="col-10">
+                        <div class="alert alert-info" id="random-word-request" role="alert">
+                          pineapple
+                          <!-- Random word API: -->
+                          <!-- https://random-word-api.herokuapp.com/word?key={BOLFEI3L}&number={number_of_words} -->
+                        </div>
+                      </div>
+                      <div class="col-2"><button class="btn btn-dark btn-lg">
+                        <i class="fas fa-microphone"></i>
+                      </button></div>
+                    </div>
                     <form>
                       <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Recipients:</label>
-                        <input type="text" class="form-control" id="recipient-name">
-                      </div>
-                      <div class="form-group">
-                        <label for="message-text" class="col-form-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
+                        <label for="reason" class="col-form-label">Reason for access:</label>
+                        <textarea class="form-control" id="reason" placeholder="(optional)"></textarea>
                       </div>
                     </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-info" data-dismiss="modal">Send request</button>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Notifications button, connected to grant access modal -->
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#grantAccessModal">
               <i class="fas fa-bell" style="padding-right:5px"></i><span class="badge badge-light">1</span>
-              <span class="sr-only">unread messages</span>
+              <span class="sr-only">pending access requests</span>
             </button>
             <!-- Grant access modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="grantAccessModal" tabindex="-1" role="dialog" aria-labelledby="grantAccessModalTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="recent_heading" id="exampleModalCenterTitle">New</h4>
+                    <h5 class="modal-title" id="grantAccessModalTitle">Access
+                      Request</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form>
-                      <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Recipients:</label>
-                        <input type="text" class="form-control" id="recipient-name">
+                    <p>
+                      Corwin Shanner has requested access to the chat
+                      "CPEN442 Bros". Make sure to listen to the audio clip to
+                      verify that it's really them, and if you're not sure, follow up with
+                      them!
+                    </p>
+                    <label for="random-word-grant" class="col-form-label">Random word:</label>
+                    <div class="row">
+                      <div class="col-10">
+                        <div class="alert alert-info" id="random-word-grant" role="alert">
+                          pineapple
+                        </div>
                       </div>
-                      <div class="form-group">
-                        <label for="message-text" class="col-form-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
-                      </div>
-                    </form>
+                      <div class="col-2"><button class="btn btn-dark btn-lg">
+                        <i class="fas fa-play-circle"></i>
+                      </button></div>
+                    </div>
+                    <label for="grant-reason"
+                           class="col-form-label">Reason:</label>
+                    <p class="bg-light" id="grant-reason">
+                      Uhh, I just forgot that password you sent earlier, sorry.
+                    </p>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-dark"
+                      data-dismiss="modal">Deny</button>
+                    <button type="button" class="btn btn-info"
+                      data-dismiss="modal">Accept</button>
                   </div>
-                </div>
+               </div>
               </div>
             </div>
 
@@ -172,7 +201,7 @@
                 <div class="chat_people">
                   <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                   <div class="chat_ib">
-                    <h5>David Zhang, Darren Whiteside<span class="chat_date">Nov 25</span></h5>
+                    <h5>CPEN442 Bros<span class="chat_date">Nov 25</span></h5>
                     <p>Sup man</p>
                   </div>
                 </div>
@@ -182,7 +211,7 @@
                 <div class="chat_people">
                   <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                   <div class="chat_ib">
-                    <h5>Corwin Shanner<span class="chat_date">Nov 25</span></h5>
+                    <h5>David Zhang<span class="chat_date">Nov 25</span></h5>
                     <p>Hey bro</p>
                   </div>
                 </div>
