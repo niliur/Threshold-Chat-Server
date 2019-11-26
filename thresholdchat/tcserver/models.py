@@ -4,13 +4,14 @@ from django.db import models
 
 
 class User(models.Model):
-    name = models.CharField(max_length=64, primary_key=True)
+    username = models.CharField(primary_key=True)
+    name = models.CharField
     passHash = models.BinaryField
     passSalt = models.BinaryField
     pubKey = models.BinaryField
 
     def __str__(self):
-        return self.name
+        return self.username
 
 
 class Chat(models.Model):
