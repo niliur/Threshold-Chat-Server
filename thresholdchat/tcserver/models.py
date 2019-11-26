@@ -4,8 +4,8 @@ from django.db import models
 
 
 class User(models.Model):
-    username = models.CharField(primary_key=True)
-    name = models.CharField
+    username = models.CharField(max_length=64)
+    name = models.CharField(max_length=128)
     passHash = models.BinaryField
     passSalt = models.BinaryField
     pubKey = models.BinaryField
@@ -26,7 +26,7 @@ class Chat(models.Model):
 
 class Invite(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
-    sender = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    sender = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.chat.name
@@ -34,7 +34,7 @@ class Invite(models.Model):
 
 class Message(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
-    sender = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    sender = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     text = models.TextField
 
