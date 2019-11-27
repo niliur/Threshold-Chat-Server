@@ -6,9 +6,8 @@ from django.db import models
 class User(models.Model):
     username = models.CharField(max_length=64)
     name = models.CharField(max_length=128)
-    passHash = models.BinaryField
-    passSalt = models.BinaryField
-    pubKey = models.BinaryField
+    # passHash = models.BinaryField
+    # passSalt = models.BinaryField
 
     def __str__(self):
         return self.username
@@ -41,11 +40,10 @@ class Message(models.Model):
     def __str__(self):
         return self.chat.name
 
-
-class Authorization(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class ChatMembership(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
-    endOfAuthTime = models.DurationField
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.user.name
+
+class AccessRequest(models.Model):
+    
