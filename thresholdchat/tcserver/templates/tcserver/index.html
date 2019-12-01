@@ -6,20 +6,20 @@
   <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
   <title>Message Chat Box - Bootsnipp.com</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles.css" />
-  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'tcserver/style.css' %}" />
+<!--  <link rel="stylesheet" type="text/css" href="../../static/tcserver/style.css" />-->
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet" />
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/75cd0848ae.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
 
-  <html>
-
-  <head>
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet" </head> <body>
     <div class="container">
       <h3 class=" text-center" style="padding:20px">ChatSafe</h3>
       <div class="messaging">
@@ -121,7 +121,7 @@
                     </p>
                     <label for="members-accepted"
                            class="col-form-label">Members: (<span class="text-info">4</span> needed):</label>
-                    <p class="bd-highlight bg-light">
+                    <p class="bd-highlight bg-light" id="members-accepted">
                       John Carrey - <span
                        class="text-success">accepted</span><br>
                       Jimmy Buffet - <span
@@ -165,7 +165,7 @@
                         <input type="text" class="form-control" id="chat-name">
                       </div>
                       <div class="form-group">
-                        <label for="usernames" class="col-form-label" placeholder="Enter usernames, separated by commas">Members:</label>
+                        <label for="usernames" class="col-form-label">Members:</label>
                         <textarea class="form-control" id="usernames" placeholder="user1, user2, ..."></textarea>
                         <small id="membersHelpBlock" class="form-text text-muted">
                           Enter the members of the chat by their usernames,
@@ -182,7 +182,7 @@
                       </div>
                       <div class="form-group">
                         <label for="expiry-time" class="col-form-label">Default message expiry time:</label>
-                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                        <select class="custom-select my-1 mr-sm-2" id="expiry-time">
                           <option selected>Choose...</option>
                           <option value="1">1 min</option>
                           <option value="5">5 min</option>
@@ -215,7 +215,7 @@
             <div class="inbox_chat">
               <div class="chat_list active_chat">
                 <div class="chat_people">
-                  <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                  <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="profile-pic"> </div>
                   <div class="chat_ib">
                     <h5>CPEN442 Bros<span class="chat_date">Nov 25</span></h5>
                     <p>Sup man</p>
@@ -225,7 +225,7 @@
 
               <div class="chat_list">
                 <div class="chat_people">
-                  <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                  <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="profile-pic"> </div>
                   <div class="chat_ib">
                     <h5>David Zhang<span class="chat_date">Nov 25</span></h5>
                     <p>Hey bro</p>
@@ -235,7 +235,7 @@
 
               <div class="chat_list">
                 <div class="chat_people">
-                  <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                  <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="profile-pic"> </div>
                   <div class="chat_ib">
                     <h5>Darren Whiteside<span class="chat_date">Nov 25</span></h5>
                     <p>This is definitely a test</p>
@@ -251,7 +251,7 @@
             <div class="msg_history">
 
               <div class="incoming_msg">
-                <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="profile-pic"> </div>
                 <div class="received_msg">
                   <div class="received_withd_msg">
                     <p>Lorum ipsum text, probably</p>
@@ -268,7 +268,7 @@
               </div>
 
               <div class="incoming_msg">
-                <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="profile-pic"> </div>
                 <div class="received_msg">
                   <div class="received_withd_msg">
                     <p>Dolor sit amet?</p>
@@ -286,11 +286,12 @@
               </div>
 
               <div class="incoming_msg">
-                <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="profile-pic"> </div>
                 <div class="received_msg">
                   <div class="received_withd_msg">
                     <p>Highly confidential message which should probably expire and never see the light of day again unless requested</p>
-                    <span class="time_date"> 7:28 PM | Today | expires in 15 mins</span>
+                    <span class="time_date"> 7:28 PM | Today | (expires in 15
+                      mins)</span>
                   </div>
                 </div>
               </div>
@@ -308,12 +309,6 @@
 
       </div>
     </div>
-</body>
-
-</html>
-<script type="text/javascript">
-
-</script>
 </body>
 
 </html>
