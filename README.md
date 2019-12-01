@@ -11,4 +11,4 @@ python3 manage.py migrate
 ```
 $ python3 manage.py runserver
 ```
-4. open localhost:8000/index in a browser to see the UI
+4. open localhost:8000/tcserver in a browser to see the UI
