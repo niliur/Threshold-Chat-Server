@@ -67,7 +67,7 @@
                       <div class="form-group">
                         <label for="reason" class="col-form-label">Reason for access:</label>
                         <textarea class="form-control" id="reason"
-                          placeholder="(required)"></textarea>
+                          placeholder="(optional)"></textarea>
                       </div>
                     </form>
                   </div>
@@ -120,7 +120,7 @@
                       Uhh, I just forgot that password you sent earlier, sorry.
                     </p>
                     <label for="members-accepted"
-                           class="col-form-label">Members: (<span class="text-info">4</span> needed):</label>
+                           class="col-form-label">Members: (<span class="text-info">3</span> needed):</label>
                     <p class="bd-highlight bg-light" id="members-accepted">
                       John Carrey - <span
                        class="text-success">accepted</span><br>
@@ -177,7 +177,7 @@
                         <input type="text" class="form-control" id="chat-threshold">
                         <small id="thresholdHelpBlock" class="form-text text-muted">
                           Enter the minimum number of members needed to grant access to the chat history.
-                          This must be equal or greater than the number of members in the chat.
+                          This must be at least one, and the number of members in the chat at most.
                         </small>
                       </div>
                       <div class="form-group">
